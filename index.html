@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Parceive</title>
+
+	<meta name="description" content="Parceive Presentation">
+	<meta name="author" content="Andreas Wilhelm">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/pikestreet.css" id="theme">
+
+	<!-- Code syntax highlighting - also available: visualstudio.css & zenburn.css -->
+	<link rel="stylesheet" href="lib/css/visualstudio.css">
+
+	<!-- Icons -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal pikestreet">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section data-background-image="img/logo.png" data-background-position="90% 90%" data-background-size="30%">
+				<h2>Software Architecture Analysis <br>for Parallelization</h2>
+				<br>
+				<small>Andreas Wilhelm, TUM<br />Chair of Computer Architecture <br>and Parallel Systems</small>
+			</section>
+
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<h1 style="color:white">The Parallelism Issue</h1>
+				</section>
+
+				<section>
+					<h4>Growth in Processor Performance over 40 Years</h4>
+					<span>
+						<img src="img/patterson.png" class="stretch" alt="Moore's Law" style="width:100%">
+					</span>
+					<font size=2>Hennessy, John L., and David A. Patterson. Computer Architecture: A Quantitative Approach. Elsevier,
+						2017.</font>
+				</section>
+
+				<section>
+					<h3>Apple A11</h3>
+					<span margin="0">
+						<img src="img/a112.png" class="stretch" alt="A112" style="width:75%"><br>
+						<font size=2 color="black">https://www.chiprebel.com/apple-a11-bionic</font>
+					</span>
+					<aside class="notes">
+						By far the most silicon is spent for GPU and Memory<br>
+						Area of Neuronal PU is as big as CPU<br>
+						6 different ISA's
+					</aside>
+				</section>
+				
+				<section>
+					<h3>The Ninja Performance Gap</h3>
+					<div>
+						<img style="border-width: 1px; border-color: black; width:70%" src="img/isca_paper_white_crop.png" alt="ISCA Paper">
+					</div>
+				</section>
+
+				<section>
+					<h3>Know Your Dependencies!</h3>
+					<aside class="notes">
+						Future: 1) Eff 10% 2) Domain 3) Quantum
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<h1 style="color:white">The Legacy Issue</h1>
+				</section>
+
+				<section>
+					<h3>Legacy Code meets Multicore</h3>
+					<span>
+						<img src="img/siemens_devices-small.png" alt="Legacy Code" style="height:70%" width="70%">
+					</span><br>
+					<font size=2>https://www.siemens.com</font>
+					<aside class="notes">
+						New Features<br>
+						Concurrent code<br>
+						Who applies parallel programmingregularly?<br>
+						What is necessary?
+					</aside>
+				</section>
+
+				<section>
+					<h3>High-Level Problem</h3>
+					<span>
+						<img src="img/ravages_of_time.png" alt="Legacy Code" style="height:60%" width="65%">
+					</span>
+					<aside class="notes">
+						Inherent and accidential complex<br>
+						No documentation / models<br>
+						Wild dependencies<br>
+						look at other abstraction levels
+					</aside>
+				</section>
+
+				<section>
+					<h3>Low-Level Problem</h3>
+					<pre>
+						<code data-trim contenteditable class="c++">
+#include "stdio.h"
+
+// Ein Klavier, ein Klavier, Mutter wir danken dir!
+int a = 256;int main(){for(char b[a+a+a],*c=b ,*d=b+ a ,*e=b+a+a,*f
+*g=fgets(e,(b[a]=b [a+a] =a- a,a) , stdin);c[0]=a-a,f=c,c=d ,d=e ,e
+=f, f= g,g =0,g = fgets(e,a+a-a+ a -a+a -a+ a- +a,stdin ),f +a-a ;
+
+// Do not touch, system might crash!
+putchar(+10)) { for( int h= 1,i=1,j, k=0 ,l=e[0]==32,m,n=0,o=c [ 0]
+== 32, p, q=0;d[q];j=k,k=l,m=n,n=o,p=(j)+(k* 2 )+(l =(i = e[ q]&&i
+) &&e[q +1 ]== 32,l*4)+(m* 8 )+(16*  n  )+(  o  =(h =c[ q]&&h)&&c[q
++1]==32,o* (16+16) )+0-0 +0, putchar(" ......"/*\  (  |||  )  |/|/ 
+/ */".')|)\\\\\\\\'""" "|||"   "|||" "|'" ")|)\\\\\\\\'/|/(/""(/'/|
+/\\|\\|'/|/(/(/'/|/\\|\\|"[d[q++]== 32?p:0]));}
+</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>Solution <b>A</b>: Hire Ninjas</h3>
+					<div>
+						<img src="img/ninjagrey.png" alt="Ninja" style="width:50%">
+					</div>
+					<font size=2>https://github.com/codewarz-ninja</font>
+				</section>
+
+				<section>
+					<h3>Solution <b>B</b>: Use Tools</h3>
+				</section>
+
+				<section>
+					<h3>Parallelization Tools</h3>
+					<div>
+						<img src="img/parallelization-tools-small.png" alt="Parallelization Tools" style="width:40%">
+					</div>
+					<ul style="list-style-type: none">
+						<li><div class="fragment"><img src="img/green-checkmark.png" style="width:40px">Very useful for "regular" code</div></li>
+						<li></li><div class="fragment"><img src="img/red-x.png" style="width:40px">Operate on low abstraction levels only</div></li>
+					</ul>
+
+					<aside class="notes">
+						lost without it<br>
+						problem: hard or impossible to understand the results<br>
+						ways to ask questions
+					</aside>
+				</section>
+
+				<section>
+					<h3>Architecture Analysis Tools</h3>
+					<div>
+						<img src="img/architecture-tools.png" alt="Architecture Tools" style="width:70%">
+					</div>
+					
+					<ul style="list-style-type: none">
+						<li><div class="fragment"><img src="img/green-checkmark.png" style="width:40px">Help to understand and evaluate</div></li>
+						<li></li><div class="fragment"><img src="img/red-x.png" style="width:40px">Neglect dynamic aspects</div></li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Parallelization requires comprehension</h3>
+					<h4>(of program's structure and the behavior)</h4>
+				</section>
+			</section>
+
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<div>
+						<img src="img/parceive_logo.png" alt="Parceive Logo" style="width:70%"><br>
+					</div>
+				</section>
+
+       <section data-background-video="img/concurrency.mp4" data-background-video-loop="loop"
+       data-background-size="auto auto">
+					<div class="accent">
+						<h1 style="color:white">Parallelism Everywhere</h1>
+					</div>
+				</section>
+				
+				<section>
+					<h3>Parallel Software Design</h3>
+					<img style="width:80%" data-src="img/pattern_books.png">
+				</section>
+
+				<section>
+					<h3>Workflow</h3>
+					<img style="width:80%" data-src="img/parceive-workflow.png">
+				</section>
+
+				<section>
+					<h3>I will not talk about</h3>
+					<img style="width:80%" data-src="img/parceive-workflow-del.png">
+				</section>
+
+				<section>
+					<h3>Software Architecture Reconstruction</h3>
+					<h4>Another Try?</h4>
+				</section>
+
+				<section>
+					<h3>So, you use directories?</h3>
+						<pre><code class="python" data-trim data-noescape>
+						controller := <span class="hljs-keyword">inFile</span>("/src/controller/.**")</code></pre>
+				</section>
+				
+				<section>
+					<h3>Or namespaces?</h3>
+					<pre><code class="python" data-trim data-noescape>
+					logic := <span class="hljs-keyword">namespace</span>("log")</code></pre>
+				</section>
+
+				<section>
+					<h3>Shared libraryies anybody?</h3>
+					<pre><code class="python" data-trim data-noescape>
+					libs := <span class="hljs-keyword">image</span>("/3dparty/.*.so")</code></pre>
+				</section>
+				
+				<section>
+					<h3>All together</h3>
+					<pre><code class="python" data-trim data-noescape>
+					operations := libs || <span class="hljs-keyword">function</span>("operate") && !logic</code></pre>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="js/pikestreet.js"></script>
+</body>
+
+</html>
