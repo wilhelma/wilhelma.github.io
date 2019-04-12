@@ -37,7 +37,9 @@
 						Interaktiv -> Methode und Werkzeug<br>
 						hybride Analyse -> statisch und dynamisch<br>
 						Architektur Rekonstruktion -> Abstraktion<br>
-						Die Erkenntnisse dieser Arbeit -> Industriepartner, 100er Studenten
+						Die Erkenntnisse dieser Arbeit -> Industriepartner, 100er Studenten<br>
+
+						Kurz die Motivation für dieses Forschungsprojekt
 					</aside>
 				</section>
 			</section>
@@ -110,6 +112,8 @@
 					<aside class="notes">
 						1. Software Jahrzehnte -> Wartung<br>
 						2. Parallelisierung -> Profitieren<br>
+
+						Komplexität basiert auf 2 Gründe
 					</aside>
 				</section>
 				
@@ -141,13 +145,25 @@
 				</section>
 				
 				<section>
-					<h3>Parallelisierung erfordert Abstraktion</h3>
+					<h3>Parallelisierung erfordert Verständnis</h3>
+					
+					<aside class="notes">
+						Zusammenhänge und Abhängigkeiten (Domäne, Design, Hardware)<br>
+
+						Werkzeuge
+					</aside>
 				</section>
 			</section>
 
 			<section>
 				<section style="color:white" data-background="#3070b3">
 					<h1 style="color:white">Werkzeuge</h1>
+					
+					<aside class="notes">
+						Interaktive Parallelisierung -> Verständnis<br>
+
+						2 Kategorien: Erkennung und Architektur
+					</aside>
 				</section>
 
 				<section>
@@ -163,10 +179,10 @@
 					</ul> -->
 
 					<aside class="notes">
-						Erkennung und Sortierung<br>
-						Muster, vorzugsweise Schleifen<br>
-						Parallelisierung; Funktionsumfang<br><br>
-						Annahme: sequenzieller Code<br>
+						Industrie und Forschung<br>
+						Vorgehen: Erkennung, Bewertung anhand Laufzeit und Probleme<br>
+						Effektiv: regulär, Muster<br>
+						Annahme: Hotspots<br>
 						Keine Architektur
 					</aside>
 				</section>
@@ -177,17 +193,27 @@
 						<img src="img/sar_tools.png" alt="Architecture Tools" style="width:100%">
 					</div>
 					
-					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Analysiert strukturelle Abhängigkeiten</span><br>
+					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Anylse struktureller Abhängigkeiten</span><br>
 					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Parallelität</span>
 					
 					<aside class="notes">
-						<br>
-						Annahme: Parallelität in sequenziellem Code
+						Extrahieren aus existierender Software und Visualisierung<br>
+						Verständnis auf verschiedenen Abstraktionsebenen<br>
+						Strukturelle Abhängigkeiten<br>
+						Parallelität -> Ignorieren das Verhalten (Daten)<br>
+
+						Unterschiedliche Communities
 					</aside>
 				</section>
 				
 				<section>
-					<h3>Parallelisierung erfordert Verständnis</h3>
+					<h3>Parallelisierung erfordert Abstraktion</h3>
+					
+					<aside class="notes">
+						Idealerweise die Abstraktionen der Entwickler<br>
+
+						Deshalb Kombination beider Kategorien
+					</aside>
 				</section>
 
 			</section>
@@ -197,12 +223,27 @@
 					<div>
 						<img src="img/parceive_logo.png" alt="Parceive Logo" style="width:70%"><br>
 					</div>
+					
+					<aside class="notes">
+						Fördert gezielt das Verständnis (Visualisierung)<br>
+						Nutzt das Wissen der Entwickler (Abstraktionen)<br>
+
+						Zugrundeliegende Sichtweise...
+					</aside>
 				</section>
 
 		       <section data-background-video="img/concurrency.mp4" data-background-video-loop="loop" data-background-size="auto auto">
 					<div class="accent">
 						<h1 style="color:white">Die Welt ist parallel</h1>
 					</div>
+					
+					<aside class="notes">
+						Die Welt und alle unsere Systeme arbeiten parallel<br>
+						Einzelne Aktoren, die teilweise unabhängig Aufgaben erledigen<br>
+						Frage: Warum nicht beim Großteil bestehender Software?<br>
+
+						Mehrere Gründe: 1. Wir haben es nicht gelernt parallel zu denken
+					</aside>
 				</section>
 <!-- 				
 				<section>
@@ -240,6 +281,14 @@
 						class="fragment bla fade-in-then-out" data-fragment-index="4"><img data-src="img/software_validation.png" style="width:200px; margin: 30px 30px"></span>
 						</li>
 					</ol>
+					
+					<aside class="notes">
+						1. Probleme, für die es parallele Lösungen gibt -> Verständnis, Domäne, Ebenen (Architektur -> Design -> Implementierung, Muster)<br>
+						2. Essenziell, Wartung, Unpassend da sequenziell<br>
+						3. Iealerweise mit den selben Abstraktionen<br>
+						4. Selbe Verhalten<br>
+						Iterativ<br>
+					</aside>
 				</section>
 				
 				<section data-transition="none-in slide-out">
@@ -250,15 +299,21 @@
 						<li>Parallelisieren</li>
 						<li>Verifizieren</li>
 					</ol>
+					
+					<aside class="notes">
+						Zwei schwierigsten Schritte<br>
+
+
+					</aside>
 				</section>
 
 				<section data-transition="slide-in none-out">
-					<h2>Software Analyse mit von Parceive</h2>
+					<h2>Software Analyse mit Parceive</h2>
 					<img style="width:100%" data-src="img/parceive-workflow.png">
 				</section>
 				
 				<section data-transition="none-in slide-out">
-					<h2>Software Analyse mit von Parceive</h2>
+					<h2>Software Analyse mit Parceive</h2>
 					<img style="width:100%" data-src="img/parceive-workflow-trace.png">
 				</section>
 				
