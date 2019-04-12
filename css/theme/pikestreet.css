@@ -375,7 +375,8 @@ body:-webkit-full-screen{
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #333; }
+  font-size: 18px;
+}
 
   /* Used to write unordered lists with custom images for good and bad points */
 li.strength {

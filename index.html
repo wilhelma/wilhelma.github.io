@@ -1,195 +1,195 @@
 <!doctype html>
-<html lang="en">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<head>
-	<meta charset="utf-8">
+		<title>Parceive</title>
 
-	<title>Parceive</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/pikestreet.css" id="theme">
 
-	<meta name="description" content="Parceive Presentation">
-	<meta name="author" content="Andreas Wilhelm">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/visualstudio.css">
 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/pikestreet.css" id="theme">
-
-	<!-- Code syntax highlighting - also available: visualstudio.css & zenburn.css -->
-	<link rel="stylesheet" href="lib/css/visualstudio.css">
-
-	<!-- Icons -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-	<!-- Printing and PDF exports -->
-	<script>
-		var link = document.createElement('link');
-		link.rel = 'stylesheet';
-		link.type = 'text/css';
-		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-		document.getElementsByTagName('head')[0].appendChild(link);
-	</script>
-
-	<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-</head>
-
-<body>
-
-	<div class="reveal pikestreet">
-
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
-			<section data-background-image="img/logo.png" data-background-position="90% 90%" data-background-size="30%">
-				<h2>Software Architecture Analysis <br>for Parallelization</h2>
-				<br>
-				<small>Andreas Wilhelm, TUM<br />Chair of Computer Architecture <br>and Parallel Systems</small>
-			</section>
-
 			<section>
+				<section data-background="img/small_example_blue.png" data-background-position="90% 90%" data-background-size="23%">
+				<!-- <section data-background-image="img/logo.png" data-background-position="90% 90%" data-background-size="30%"> -->
+					<h3>Interaktive Software Parallelisierung basierend auf hybrider Analyse und Architektur Rekonstruktion</h3>
+					<small>Andreas Wilhelm, TUM<br />Lehrstuhl für Rechnerarchitektur<br>und Parallele Systeme</small>
+
+					<aside class="notes">
+						Parallelisierung -> aktueller den je<br>
+						Interaktiv -> Methode und Werkzeug<br>
+						hybride Analyse -> statisch und dynamisch<br>
+						Architektur Rekonstruktion -> Abstraktion<br>
+						Die Erkenntnisse dieser Arbeit -> Industriepartner, 100er Studenten
+					</aside>
+				</section>
+			</section>
+			
+			<!-- <section>
 				<section style="color:white" data-background="#3070b3">
-					<h1 style="color:white">The Parallelism Issue</h1>
+					<h1 style="color:white">Parallele Systeme</h1>
 				</section>
 
 				<section>
-					<h4>Growth in Processor Performance over 40 Years</h4>
+					<h2>Die Prozessorleistung stagniert</h2>
 					<span>
-						<img src="img/patterson.png" class="stretch" alt="Moore's Law" style="width:100%">
+						<img src="img/patterson.png" class="stretch" alt="Moore's Law" style="margin: 0px 0px; width:100%">
 					</span>
 					<font size=2>Hennessy, John L., and David A. Patterson. Computer Architecture: A Quantitative Approach. Elsevier,
 						2017.</font>
-				</section>
-
-				<section>
-					<h3>Apple A11</h3>
-					<span margin="0">
-						<img src="img/a112.png" class="stretch" alt="A112" style="width:75%"><br>
-						<font size=2 color="black">https://www.chiprebel.com/apple-a11-bionic</font>
-					</span>
-					<aside class="notes">
-						By far the most silicon is spent for GPU and Memory<br>
-						Area of Neuronal PU is as big as CPU<br>
-						6 different ISA's
+					
+						<aside class="notes">
+						Grob, Leistungssteigerung 40 Jahre<br>
+						2 vs 30<br>
+						100x Kerne - Lösung: Arten
 					</aside>
 				</section>
 				
 				<section>
-					<h3>The Ninja Performance Gap</h3>
+					<h3>Apple A11</h3>
+					<span margin="0">
+						<img src="img/a112.png" class="stretch" alt="A112" style="width:70%"><br>
+						<font size=2 color="black">https://www.chiprebel.com/apple-a11-bionic</font>
+					</span>
+
+					<aside class="notes">
+						6 different ISA's<br>
+						Komplexität 
+					</aside>
+				</section>
+				
+				<section>
+					<h3>Ninja Entwickler</h3>
 					<div>
 						<img style="border-width: 1px; border-color: black; width:70%" src="img/isca_paper_white_crop.png" alt="ISCA Paper">
 					</div>
+					
+					<aside class="notes">
+						Domäne, Software Design, Hardware Architektur
+					</aside>
 				</section>
 
 				<section>
-					<h3>Know Your Dependencies!</h3>
+					<h3>Kenne die Abhängigkeiten!</h3>
+				</section>
+			</section> -->
+
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<h1 style="color:white">Parallelisierung</h1>
+
 					<aside class="notes">
-						Future: 1) Eff 10% 2) Domain 3) Quantum
+						Motivieren: Notwendig und Herausforderungen
 					</aside>
+				</section>
+
+				<section>
+					<h3>Industrielle Software ist "Legacy" Software</h3>
+					<span>
+						<img src="img/siemens_devices-small.png" alt="Legacy Code" style="height:70%" width="70%">
+					</span><br>
+					<font size=2>https://www.siemens.com</font>
+
+					<aside class="notes">
+						1. Software Jahrzehnte -> Wartung<br>
+						2. Parallelisierung -> Profitieren<br>
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Die (Hardware) Komplexität steigt</h2>
+					<div>
+						<img src="img/ryzen3000.png" alt="Ryzen" style="width:70%; margin: 0px 0px">
+					</div>
+					<font size=2>https://www.amd.com/de/ryzen</font>
+
+					<aside class="notes">
+						Sequentiell -> < 2%<br>
+						Systeme nebenläufig -> Wettlaufsituationen<br>
+						Komplex -> Abhängigkeiten
+					</aside>
+				</section>
+				
+				<section>
+					<h2>Die (Software) Komplexität steigt</h2>
+					<div>
+						<img src="img/car_loc.png" alt="CAR LOC" style="width:90%"><br>
+					</div>
+					<font size=2>http://spectrum.ieee.org/transportation/systems/this-car-runs-on-code</font>
+
+					<aside class="notes">
+						Autos -> 5 Jahre X 2<br>
+						Selbst ganze Teams
+					</aside>
+				</section>
+				
+				<section>
+					<h3>Parallelisierung erfordert Abstraktion</h3>
 				</section>
 			</section>
 
 			<section>
 				<section style="color:white" data-background="#3070b3">
-					<h1 style="color:white">The Legacy Issue</h1>
+					<h1 style="color:white">Werkzeuge</h1>
 				</section>
 
 				<section>
-					<h3>Legacy Code meets Multicore</h3>
-					<span>
-						<img src="img/siemens_devices-small.png" alt="Legacy Code" style="height:70%" width="70%">
-					</span><br>
-					<font size=2>https://www.siemens.com</font>
-					<aside class="notes">
-						New Features<br>
-						Concurrent code<br>
-						Who applies parallel programmingregularly?<br>
-						What is necessary?
-					</aside>
-				</section>
-
-				<section>
-					<h3>High-Level Problem</h3>
-					<span>
-						<img src="img/ravages_of_time.png" alt="Legacy Code" style="height:60%" width="65%">
-					</span>
-					<aside class="notes">
-						Inherent and accidential complex<br>
-						No documentation / models<br>
-						Wild dependencies<br>
-						look at other abstraction levels
-					</aside>
-				</section>
-
-				<section>
-					<h3>Low-Level Problem</h3>
-					<pre>
-						<code data-trim contenteditable class="c++">
-#include "stdio.h"
-
-// Ein Klavier, ein Klavier, Mutter wir danken dir!
-int a = 256;int main(){for(char b[a+a+a],*c=b ,*d=b+ a ,*e=b+a+a,*f
-*g=fgets(e,(b[a]=b [a+a] =a- a,a) , stdin);c[0]=a-a,f=c,c=d ,d=e ,e
-=f, f= g,g =0,g = fgets(e,a+a-a+ a -a+a -a+ a- +a,stdin ),f +a-a ;
-
-// Do not touch, system might crash!
-putchar(+10)) { for( int h= 1,i=1,j, k=0 ,l=e[0]==32,m,n=0,o=c [ 0]
-== 32, p, q=0;d[q];j=k,k=l,m=n,n=o,p=(j)+(k* 2 )+(l =(i = e[ q]&&i
-) &&e[q +1 ]== 32,l*4)+(m* 8 )+(16*  n  )+(  o  =(h =c[ q]&&h)&&c[q
-+1]==32,o* (16+16) )+0-0 +0, putchar(" ......"/*\  (  |||  )  |/|/ 
-/ */".')|)\\\\\\\\'""" "|||"   "|||" "|'" ")|)\\\\\\\\'/|/(/""(/'/|
-/\\|\\|'/|/(/(/'/|/\\|\\|"[d[q++]== 32?p:0]));}
-</code>
-					</pre>
-				</section>
-
-				<section>
-					<h3>Solution <b>A</b>: Hire Ninjas</h3>
+					<h3>Werkzeuge zur Erkennung von Parallelität</h3>
 					<div>
-						<img src="img/ninjagrey.png" alt="Ninja" style="width:50%">
+						<img src="img/automatic_parallelism_discovery_tools.png" alt="Parallelization Tools" style="width:100%">
 					</div>
-					<font size=2>https://github.com/codewarz-ninja</font>
-				</section>
-
-				<section>
-					<h3>Solution <b>B</b>: Use Tools</h3>
-				</section>
-
-				<section>
-					<h3>Parallelization Tools</h3>
-					<div>
-						<img src="img/parallelization-tools-small.png" alt="Parallelization Tools" style="width:40%">
-					</div>
-					<ul style="list-style-type: none">
-						<li><div class="fragment"><img src="img/green-checkmark.png" style="width:40px">Very useful for "regular" code</div></li>
-						<li></li><div class="fragment"><img src="img/red-x.png" style="width:40px">Operate on low abstraction levels only</div></li>
-					</ul>
+					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Effektiv für "reguläre" Software</span><br>
+					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Software Architektur</span>
+					<!-- <ul style="list-style-type: none">
+						<li><div class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Effektiv für "regulären" Code</div></li>
+						<li></li><div class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Verwenden unflexible Abstraktionen</div></li>
+					</ul> -->
 
 					<aside class="notes">
-						lost without it<br>
-						problem: hard or impossible to understand the results<br>
-						ways to ask questions
+						Erkennung und Sortierung<br>
+						Muster, vorzugsweise Schleifen<br>
+						Parallelisierung; Funktionsumfang<br><br>
+						Annahme: sequenzieller Code<br>
+						Keine Architektur
 					</aside>
 				</section>
 
 				<section>
-					<h3>Architecture Analysis Tools</h3>
+					<h3>Werkzeuge zur Architektur Rekonstruktion</h3>
 					<div>
-						<img src="img/architecture-tools.png" alt="Architecture Tools" style="width:70%">
+						<img src="img/sar_tools.png" alt="Architecture Tools" style="width:100%">
 					</div>
 					
-					<ul style="list-style-type: none">
-						<li><div class="fragment"><img src="img/green-checkmark.png" style="width:40px">Help to understand and evaluate</div></li>
-						<li></li><div class="fragment"><img src="img/red-x.png" style="width:40px">Neglect dynamic aspects</div></li>
-					</ul>
+					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Analysiert strukturelle Abhängigkeiten</span><br>
+					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Parallelität</span>
+					
+					<aside class="notes">
+						<br>
+						Annahme: Parallelität in sequenziellem Code
+					</aside>
+				</section>
+				
+				<section>
+					<h3>Parallelisierung erfordert Verständnis</h3>
 				</section>
 
-				<section>
-					<h3>Parallelization requires comprehension</h3>
-					<h4>(of program's structure and the behavior)</h4>
-				</section>
 			</section>
 
 			<section>
@@ -199,64 +199,231 @@ putchar(+10)) { for( int h= 1,i=1,j, k=0 ,l=e[0]==32,m,n=0,o=c [ 0]
 					</div>
 				</section>
 
-       <section data-background-video="img/concurrency.mp4" data-background-video-loop="loop"
-       data-background-size="auto auto">
+		       <section data-background-video="img/concurrency.mp4" data-background-video-loop="loop" data-background-size="auto auto">
 					<div class="accent">
-						<h1 style="color:white">Parallelism Everywhere</h1>
+						<h1 style="color:white">Die Welt ist parallel</h1>
+					</div>
+				</section>
+<!-- 				
+				<section>
+					<h2>Muster-basiertes Software Design</h2>
+					<img style="width:70%" data-src="img/pattern_books.png">
+				</section>
+				
+				<section data-transition="slide-in none-out">
+					<h2>Die Abstraktionen sind verfügbar</h2>
+					<img style="width:100%" data-src="img/programming_languages.png">
+				</section>
+				
+				<section data-transition="none-in slide-out">
+					<h2>Die Abstraktionen sind verfügbar</h2>
+					<img style="width:100%" data-src="img/parallel_frameworks.png">
+				</section> -->
+				
+				<section data-transition="slide-in none-out">
+					<h2>Szenario-basierte Parallelisierung</h2>
+					<ol>
+						<li class="fragment" data-fragment-index="1">Szenarien identifizieren
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="1"><img data-src="img/pattern_books.png" style="width:350px; margin: 30px 30px"></span>
+						</li>
+						<li class="fragment" data-fragment-index="2">Restrukturieren
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="2"><img data-src="img/refactoring_books.png" style="width:280px; margin: 30px 30px"></span>
+						</li>
+						<li class="fragment" data-fragment-index="3">Parallelisieren
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="3"><img data-src="img/programming_stuff.png" style="width:400px; margin: 30px 30px"></span>
+						</li>
+						<li class="fragment" data-fragment-index="4">Validieren
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="4"><img data-src="img/software_validation.png" style="width:200px; margin: 30px 30px"></span>
+						</li>
+					</ol>
+				</section>
+				
+				<section data-transition="none-in slide-out">
+					<h2>Parallelisierung <b>mit Parceive</b></h2>
+					<ol>
+						<li><b>Szenarien identifizieren</b></li>
+						<li><b>Restrukturieren</b></li>
+						<li>Parallelisieren</li>
+						<li>Verifizieren</li>
+					</ol>
+				</section>
+
+				<section data-transition="slide-in none-out">
+					<h2>Software Analyse mit von Parceive</h2>
+					<img style="width:100%" data-src="img/parceive-workflow.png">
+				</section>
+				
+				<section data-transition="none-in slide-out">
+					<h2>Software Analyse mit von Parceive</h2>
+					<img style="width:100%" data-src="img/parceive-workflow-trace.png">
+				</section>
+				
+				<section>
+					<h3>Demo</h3>
+					<div>
+						<img src="img/parceive_dashboard.png" alt="Parceive Dashboard" style="width:100%"><br>
 					</div>
 				</section>
 				
 				<section>
-					<h3>Parallel Software Design</h3>
-					<img style="width:80%" data-src="img/pattern_books.png">
-				</section>
-
-				<section>
-					<h3>Workflow</h3>
-					<img style="width:80%" data-src="img/parceive-workflow.png">
-				</section>
-
-				<section>
-					<h3>I will not talk about</h3>
-					<img style="width:80%" data-src="img/parceive-workflow-del.png">
-				</section>
-
-				<section>
-					<h3>Software Architecture Reconstruction</h3>
-					<h4>Another Try?</h4>
-				</section>
-
-				<section>
-					<h3>So, you use directories?</h3>
-						<pre><code class="python" data-trim data-noescape>
-						controller := <span class="hljs-keyword">inFile</span>("/src/controller/.**")</code></pre>
+					<h2>Software Analyse mit von Parceive</h2>
+					<img style="width:100%" data-src="img/parceive-workflow-architecture.png">
 				</section>
 				
 				<section>
-					<h3>Or namespaces?</h3>
-					<pre><code class="python" data-trim data-noescape>
-					logic := <span class="hljs-keyword">namespace</span>("log")</code></pre>
-				</section>
-
-				<section>
-					<h3>Shared libraryies anybody?</h3>
-					<pre><code class="python" data-trim data-noescape>
-					libs := <span class="hljs-keyword">image</span>("/3dparty/.*.so")</code></pre>
+					<h3>Architekten verwenden Abstraktion</h3>
+					<img style="width:70%" data-src="img/abstraction_levels.png">
 				</section>
 				
 				<section>
-					<h3>All together</h3>
+					<h2>Architektur Regeln: Bibliotheken</h2>
 					<pre><code class="python" data-trim data-noescape>
-					operations := libs || <span class="hljs-keyword">function</span>("operate") && !logic</code></pre>
+					<div>libs = <span class="hljs-keyword">image</span>("/3dparty/.*.so")</div>
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Architektur Regeln: Verzeichnisse</h2>
+					<pre><code class="python" data-trim data-noescape>
+					logic = <span class="hljs-keyword">inFile</span>("/src/logic/.**")
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Architektur Regeln: Operationen</h2>
+					<pre><code class="python" data-trim data-noescape>
+					operations := <span class="hljs-keyword">function</span>("operate") <span class="hljs-keyword">&& !</span>logic
+					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Demo</h3>
+					<div>
+						<img src="img/parceive_dashboard.png" alt="Parceive Dashboard" style="width:100%"><br>
+					</div>
+				</section>
+				
+				<section>
+					<h3>Parallelisierung per Task-Graph</h3>
+					<div>
+						<img src="img/task_graph.png" alt="Task Graph" style="width:70%"><br>
+					</div>
+				</section>
+
+				<section>
+					<h2>Task-Graph Implementierung</h2>
+					<pre><code class="c++" data-trim data-noescape>
+					...
+					<span class="hljs-keyword">make_edge</span>(playSemiFinal_1, <span class="hljs-keyword">input_port</span><0>(playFinal));
+					<span class="hljs-keyword">make_edge</span>(playSemiFinal_2, <span class="hljs-keyword">input_port</span><1>(playFinal));
+				
+					graph.<span class="hljs-keyword">wait_for_all</span>();
+					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Parceive bietet einiges mehr...</h3>
+				</section>
+				
+				<section>
+					<h2>Filter</h2>
+					<pre><code class="python" data-trim data-noescape>
+					<span class="hljs-keyword">exclude</span> (libs, <span class="hljs-keyword">inFile</span>("*_generated_*"))      # static filter
+					<span class="hljs-keyword">enable</span> (logic)                               # dynamic filter
+					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Analyse paralleler Software</h3>
+					<div>
+						<img src="img/cct_view_threads.pdf" alt="CCT View Threads" style="width:100%"><br>
+					</div>
+					<div>
+						<img src="img/trace_view_threads.pdf" alt="Trace View Threads" style="width:100%"><br>
+					</div>
+				</section>
+				
+				<section>
+					<h2>Einschränkungen von Parceive</h2>
+						<span class="fragment"><b>Unvollständigkeit</b> durch dynamische Analyse<span><br>
+						<span class="fragment"><b>Verzögerung</b> durch Instrumentierung<span><br>
+						<span class="fragment">Eingeschränkte <b>Portabilität</b><span><br>
+						<span class="fragment"><b>Fehlende Unterstützung</b> verteilter Anwendungen<span>
+				</section>
+			</section>
+			
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<h1 style="color:white">Zusammenfassung</h1>
+				</section>
+				
+				<section>
+					<h2>Wissenschaftliche Beiträge</h2>
+						<span class="fragment" data-fragment-index="1"><b>Werkzeug</b> für interaktiven Parallelisierung<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="1">Parceive: Interactive Parallelization Based on Dynamic Analysis.<br>
+						Andreas Wilhelm, Bharatkumar Sharma, Ranajoy Malakar, Tobias Schüle and Michael Gerndt.<br>IEEE SANER, 2015</span><br>
+						<span class="fragment" data-fragment-index="2"><b>Meta-Model</b> für hybride Analysen<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="2">Parceive: Interactive Parallelization Based on Dynamic Analysis.<br>
+						Andreas Wilhelm, Bharatkumar Sharma, Ranajoy Malakar, Tobias Schüle and Michael Gerndt.<br>IEEE SANER, 2015</span><br>
+				        <span class="fragment" data-fragment-index="3"><b>Framework</b> für dynamische Visualisierung<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="3">A Visualization Framework for Parallelization.<br>
+						Andreas Wilhelm, Victor Savu, Efe Amadasun, Michael Gerndt and Tobias Schuele.<br>
+						IEEE VISSOFT, 2016</span><br>
+				        <span class="fragment" data-fragment-index="4"><b>Methode</b> für Software Architektur Rekonstruktion<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="4">Tool-based Interactive Software Parallelization: A Case Study.<br>
+						Andreas Wilhelm, Faris Čakarić, Michael Gerndt and Tobias Schüle.<br>
+						ACM/IEEE ICSE, 2018</span><br>
+						<span class="fragment" data-fragment-index="5"><b>Evaluation</b> anhand von zwei Anwendungen<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="5">Interactive Software Parallelization based on Hybrid Analysis and Software Architecture Reconstruction<br>
+						Andreas Wilhelm<br>PhD Thesis, 2019</span><br>
+				</section>
+				
+				<section>
+					<h2>Möglichkeiten für weitere Arbeiten</h2>
+						<span class="fragment">Mehr <b>Automatisierung</b><span><br>
+						<span class="fragment"><b>Aggregation</b> mehrerer Analyse-Läufe<span><br>
+						<span class="fragment"><b>Benutzerdefinierte</b> Analysen<span><br>
+				</section>
+			</section>
+
+			<section>
+				<section style="color:white" data-background="#3070b3">
+					<div>
+						<img src="img/danke.png" alt="Danke" style="width:100%"><br>
+					</div>
 				</section>
 			</section>
 		</div>
 	</div>
+		</div>
 
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.js"></script>
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="js/pikestreet.js"></script>
-</body>
+		<script src="js/reveal.js"></script>
 
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: false,
+    			transition: 'slide', // none/fade/slide/convex/concave/zoom
+    			transitionSpeed: 'fast', // default/fast/slow
+    			slideNumber: 'c', // true/false
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
 </html>
