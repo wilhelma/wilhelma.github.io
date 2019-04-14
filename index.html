@@ -29,14 +29,13 @@
 			<section>
 				<section data-background="img/small_example_blue.png" data-background-position="90% 90%" data-background-size="23%">
 				<!-- <section data-background-image="img/logo.png" data-background-position="90% 90%" data-background-size="30%"> -->
-					<h3>Interaktive Software Parallelisierung basierend auf hybrider Analyse und Architektur Rekonstruktion</h3>
+					<h3>Interaktive Software-Parallelisierung basierend auf hybrider Analyse und Architektur-Rekonstruktion</h3>
 					<small>Andreas Wilhelm, TUM<br />Lehrstuhl für Rechnerarchitektur<br>und Parallele Systeme</small>
 
 					<aside class="notes">
 						Parallelisierung -> aktueller den je<br>
 						Interaktiv -> Methode und Werkzeug<br>
-						hybride Analyse -> statisch und dynamisch<br>
-						Architektur Rekonstruktion -> Abstraktion<br>
+						hybride Analyse + Architektur Rekonstruktion -> Verhalten und Struktur<br>
 						Die Erkenntnisse dieser Arbeit -> Industriepartner, 100er Studenten<br>
 
 						Kurz die Motivation für dieses Forschungsprojekt
@@ -103,15 +102,16 @@
 				</section>
 
 				<section>
-					<h3>Industrielle Software ist "Legacy" Software</h3>
+					<h3>Industrielle Software-Systeme</h3>
 					<span>
 						<img src="img/siemens_devices-small.png" alt="Legacy Code" style="height:70%" width="70%">
 					</span><br>
 					<font size=2>https://www.siemens.com</font>
 
 					<aside class="notes">
-						1. Software Jahrzehnte -> Wartung<br>
-						2. Parallelisierung -> Profitieren<br>
+						Leben maßgeblich beeinflußt von technischen Systemen<br>
+						Entwicklungszeit Jahrzehnte -> überdauert einige Hardware-Generationen<br>
+						Software ständig anpassen -> Wartung Großteil<br>
 
 						Komplexität basiert auf 2 Gründe
 					</aside>
@@ -120,14 +120,13 @@
 				<section>
 					<h2>Die (Hardware) Komplexität steigt</h2>
 					<div>
-						<img src="img/ryzen3000.png" alt="Ryzen" style="width:70%; margin: 0px 0px">
+						<img src="img/ryzen3000.jpg" alt="Ryzen" style="width:70%; margin: 0px 0px">
 					</div>
 					<font size=2>https://www.amd.com/de/ryzen</font>
 
 					<aside class="notes">
 						Sequentiell -> < 2%<br>
-						Systeme nebenläufig -> Wettlaufsituationen<br>
-						Komplex -> Abhängigkeiten
+						Abhängigkeiten -> Wettlaufsituationen
 					</aside>
 				</section>
 				
@@ -140,15 +139,18 @@
 
 					<aside class="notes">
 						Autos -> 5 Jahre X 2<br>
-						Selbst ganze Teams
+						Selbst ganze Teams<br>
+						Parallelisierung wird dadurch extrem schwierig<br>
+
+						Frage: Wie umgehen mit der Komplexität? -> Informatik gibt darauf meist die selbe Antwort:
 					</aside>
 				</section>
 				
 				<section>
-					<h3>Parallelisierung erfordert Verständnis</h3>
+					<h3>Parallelisierung erfordert Abstraktion</h3>
 					
 					<aside class="notes">
-						Zusammenhänge und Abhängigkeiten (Domäne, Design, Hardware)<br>
+						Zusammenhänge und Abhängigkeiten<br>
 
 						Werkzeuge
 					</aside>
@@ -160,7 +162,8 @@
 					<h1 style="color:white">Werkzeuge</h1>
 					
 					<aside class="notes">
-						Interaktive Parallelisierung -> Verständnis<br>
+						Automatische Verfahren zu konservativ<br>
+						Parallelisierung unterstützen<br>
 
 						2 Kategorien: Erkennung und Architektur
 					</aside>
@@ -171,8 +174,8 @@
 					<div>
 						<img src="img/automatic_parallelism_discovery_tools.png" alt="Parallelization Tools" style="width:100%">
 					</div>
-					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Effektiv für "reguläre" Software</span><br>
-					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Software Architektur</span>
+					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Effektiv für "reguläre" Parallelität</span><br>
+					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Software-Architektur</span>
 					<!-- <ul style="list-style-type: none">
 						<li><div class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Effektiv für "regulären" Code</div></li>
 						<li></li><div class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Verwenden unflexible Abstraktionen</div></li>
@@ -183,36 +186,34 @@
 						Vorgehen: Erkennung, Bewertung anhand Laufzeit und Probleme<br>
 						Effektiv: regulär, Muster<br>
 						Annahme: Hotspots<br>
-						Keine Architektur
+						Findet feste Abstraktionen, meist auf niedriger Ebene z.B. Schleifen
 					</aside>
 				</section>
 
 				<section>
-					<h3>Werkzeuge zur Architektur Rekonstruktion</h3>
+					<h3>Werkzeuge zur Architektur-Rekonstruktion</h3>
 					<div>
 						<img src="img/sar_tools.png" alt="Architecture Tools" style="width:100%">
 					</div>
 					
-					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Anylse struktureller Abhängigkeiten</span><br>
+					<span class="fragment"><img src="img/green-checkmark.png" style="margin: 0px 0px; width:40px">Analyse struktureller Abhängigkeiten</span><br>
 					<span class="fragment"><img src="img/red-x.png" style="margin: 0px 0px; width:40px">Kein Fokus auf Parallelität</span>
 					
 					<aside class="notes">
 						Extrahieren aus existierender Software und Visualisierung<br>
 						Verständnis auf verschiedenen Abstraktionsebenen<br>
 						Strukturelle Abhängigkeiten<br>
-						Parallelität -> Ignorieren das Verhalten (Daten)<br>
-
-						Unterschiedliche Communities
+						Parallelität -> Ignorieren das Verhalten (Daten)
 					</aside>
 				</section>
 				
 				<section>
-					<h3>Parallelisierung erfordert Abstraktion</h3>
+					<h3>Parallelisierung erfordert Verständnis</h3>
 					
 					<aside class="notes">
-						Idealerweise die Abstraktionen der Entwickler<br>
-
-						Deshalb Kombination beider Kategorien
+						Unterschiedliche Communities<br>
+						Verhalten und Struktur<br>
+						Domäne und Hardware
 					</aside>
 				</section>
 
@@ -239,10 +240,10 @@
 					
 					<aside class="notes">
 						Die Welt und alle unsere Systeme arbeiten parallel<br>
-						Einzelne Aktoren, die teilweise unabhängig Aufgaben erledigen<br>
-						Frage: Warum nicht beim Großteil bestehender Software?<br>
+						Das stimmt nicht für den Großteil bestehender Software<br>
+						Warum?<br>
 
-						Mehrere Gründe: 1. Wir haben es nicht gelernt parallel zu denken
+						Mehrere Gründe: 1. Wie wir gelernt haben mit unseren Programmiermodellen Probleme lösen
 					</aside>
 				</section>
 <!-- 				
@@ -264,30 +265,30 @@
 				<section data-transition="slide-in none-out">
 					<h2>Szenario-basierte Parallelisierung</h2>
 					<ol>
-						<li class="fragment" data-fragment-index="1">Szenarien identifizieren
+						<li class="fragment" data-fragment-index="1">Szenarien für Parallelisierung identifizieren
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="1"><img data-src="img/pattern_books.png" style="width:350px; margin: 30px 30px"></span>
 						</li>
-						<li class="fragment" data-fragment-index="2">Restrukturieren
+						<li class="fragment" data-fragment-index="2">Software Restrukturieren
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="2"><img data-src="img/refactoring_books.png" style="width:280px; margin: 30px 30px"></span>
 						</li>
-						<li class="fragment" data-fragment-index="3">Parallelisieren
+						<li class="fragment" data-fragment-index="3">Software Parallelisieren
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="3"><img data-src="img/programming_stuff.png" style="width:400px; margin: 30px 30px"></span>
 						</li>
-						<li class="fragment" data-fragment-index="4">Validieren
+						<li class="fragment" data-fragment-index="4">Software Validieren
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="4"><img data-src="img/software_validation.png" style="width:200px; margin: 30px 30px"></span>
 						</li>
 					</ol>
 					
 					<aside class="notes">
-						1. Probleme, für die es parallele Lösungen gibt -> Verständnis, Domäne, Ebenen (Architektur -> Design -> Implementierung, Muster)<br>
-						2. Essenziell, Wartung, Unpassend da sequenziell<br>
+						Prozess, um schrittweise das Programmverständnis zu fördern<br>
+						1. Muster, System, Bewertung, Probleme ... <br>
+						2. Essenziell, Datenstrukturen und Abstraktionen unpassend<br>
 						3. Iealerweise mit den selben Abstraktionen<br>
-						4. Selbe Verhalten<br>
-						Iterativ<br>
+						4. Selbe Verhalten
 					</aside>
 				</section>
 				
@@ -302,64 +303,122 @@
 					
 					<aside class="notes">
 						Zwei schwierigsten Schritte<br>
+						Iterativ<br>
 
-
+						Bevor Demonstration, den Ablauf von Parceive verstehen
 					</aside>
 				</section>
 
 				<section data-transition="slide-in none-out">
-					<h2>Software Analyse mit Parceive</h2>
+					<h2>Software-Analyse mit Parceive</h2>
 					<img style="width:100%" data-src="img/parceive-workflow.png">
+					
+					<aside class="notes">
+						Extrahieren, Abstrahieren und Visualisieren<br>
+						Benutzer interagiert mit der Visualisierung um Analysen zu starten -> verschiedene Ansichten<br>
+						Hierbei Verhalten und Struktur<br>
+						Verhalten: Ereignisse -> Programme in Binärform, dynamische Instrumentierung<br>
+						Struktur: Architekturmodell, rekonstruiert aus Symbolinformationen anhand benutzerspezifischen Regeln
+					</aside>
 				</section>
 				
 				<section data-transition="none-in slide-out">
-					<h2>Software Analyse mit Parceive</h2>
+					<h2>Software-Analyse mit Parceive</h2>
 					<img style="width:100%" data-src="img/parceive-workflow-trace.png">
+					
+					<aside class="notes">
+						Im ersten Schritt der Demonstration zeige ich die Visualisierung und ein paar ausgewählte Analysen
+					</aside>
 				</section>
 				
 				<section>
-					<h3>Demo</h3>
+					<h3>Demo: WMSim</h3>
 					<div>
-						<img src="img/parceive_dashboard.png" alt="Parceive Dashboard" style="width:100%"><br>
+						<img src="img/wmplan.png" alt="WM Plan" style="width:100%; margin: 0px 0px;"><br>
 					</div>
+					
+					<aside class="notes">
+						Simulator für Fußball Weltmeisterschaft<br>
+						Alle 64 Spiele simuliert, um einen Weltmeister zu ermitteln<br>
+						Funktioniert sehr schlecht -> Deutschland<br>
+
+						Gruppenphase und Finalphase<br>
+						Szenario: Taskparallelität<br>
+						Hypothese: Alle Spiele sind unabhängig
+					</aside>
 				</section>
 				
 				<section>
-					<h2>Software Analyse mit von Parceive</h2>
+					<h2>Software-Analyse mit von Parceive</h2>
 					<img style="width:100%" data-src="img/parceive-workflow-architecture.png">
+					
+					<aside class="notes">
+						Für Refaktorierung: Alle Abhängigkeiten von Interesse, vor allem Strukturelle<br>
+
+						Wie Software strukturiert liegt v.a. an den Architekten und Entwicklern<br>
+						Typisch...
+					</aside>
 				</section>
 				
 				<section>
-					<h3>Architekten verwenden Abstraktion</h3>
-					<img style="width:70%" data-src="img/abstraction_levels.png">
+					<h3>Veschiedene Abstraktionsebenen</h3>
+					<img style="width:100%" data-src="img/abstraction_levels.png">
+					
+					<aside class="notes">
+						Tatsächliche Definition kann unterschiedlich sein<br>
+						Architektur: Bibliotheken oder Pakete<br>
+						Design: Dateien, Verzeichnisse oder Klassenhierarchien<br>
+						Implementierung: Instruktionen oder Variablen<br>
+
+						Sprache, Beispiel auf Architektur Ebene
+					</aside>
 				</section>
 				
 				<section>
-					<h2>Architektur Regeln: Bibliotheken</h2>
+					<h2>Architektur-Regeln: Bibliotheken</h2>
 					<pre><code class="python" data-trim data-noescape>
-					<div>libs = <span class="hljs-keyword">image</span>("/3dparty/.*.so")</div>
+					<div>libraries = <span class="hljs-keyword">image</span>("libs/.*")</div>
 					</code></pre>
+					
+					<aside class="notes">
+						Alle Bibliotheken in diesem Verzeichnis in komponente libraries
+					</aside>
 				</section>
 				
 				<section>
-					<h2>Architektur Regeln: Verzeichnisse</h2>
+					<h3>Verschiedene Abstraktionsebenen</h3>
+					<img style="width:100%" data-src="img/abstraction_levels_pcv.png">
+					
+					<aside class="notes">
+						Explizit und Implizit
+					</aside>
+				</section>
+<!-- 				
+				<section>
+					<h2>Architektur-Regeln: Verzeichnisse</h2>
 					<pre><code class="python" data-trim data-noescape>
 					logic = <span class="hljs-keyword">inFile</span>("/src/logic/.**")
 					</code></pre>
-				</section>
-				
+				</section> -->
+<!-- 				
 				<section>
-					<h2>Architektur Regeln: Operationen</h2>
+					<h2>Architektur-Regeln: Operationen</h2>
 					<pre><code class="python" data-trim data-noescape>
-					operations := <span class="hljs-keyword">function</span>("operate") <span class="hljs-keyword">&& !</span>logic
+					operations := <span class="hljs-keyword">function</span>("operate.*") <span class="hljs-keyword">&& !</span>logic
 					</code></pre>
-				</section>
+				</section> -->
 				
 				<section>
-					<h3>Demo</h3>
+					<h3>Demo: WMSim</h3>
 					<div>
-						<img src="img/parceive_dashboard.png" alt="Parceive Dashboard" style="width:100%"><br>
+						<img src="img/wmplan.png" alt="WM Plan" style="width:100%; margin: 0px 0px;"><br>
 					</div>
+					
+					<aside class="notes">
+						Wie können wir das ganze für unser Demo nutzen?<br>
+
+						Der Simulator wurde schließlich mit einem Szenario bzgl. Task-Graph parallelisiert
+					</aside>
 				</section>
 				
 				<section>
@@ -367,17 +426,14 @@
 					<div>
 						<img src="img/task_graph.png" alt="Task Graph" style="width:70%"><br>
 					</div>
-				</section>
-
-				<section>
-					<h2>Task-Graph Implementierung</h2>
-					<pre><code class="c++" data-trim data-noescape>
-					...
-					<span class="hljs-keyword">make_edge</span>(playSemiFinal_1, <span class="hljs-keyword">input_port</span><0>(playFinal));
-					<span class="hljs-keyword">make_edge</span>(playSemiFinal_2, <span class="hljs-keyword">input_port</span><1>(playFinal));
-				
-					graph.<span class="hljs-keyword">wait_for_all</span>();
-					</code></pre>
+					
+					<aside class="notes">
+						Kanten des Graphen entsprechen dem Spielplan der Weltmeisterschaft<br>
+						Die Parallelität ist explizit im Code und somit wartbar und verständlich<br>
+						Die parallele Ausführung ist implizt und Hardware-unabhängig<br>
+						
+						Schlüssel: Verständnis der Domäne!
+					</aside>
 				</section>
 				
 				<section>
@@ -390,6 +446,12 @@
 					<span class="hljs-keyword">exclude</span> (libs, <span class="hljs-keyword">inFile</span>("*_generated_*"))      # static filter
 					<span class="hljs-keyword">enable</span> (logic)                               # dynamic filter
 					</code></pre>
+					
+					<aside class="notes">
+						Praktischen Einsatz essenziell<br>
+						Statische Filter zum Ausschluss der Analysen von nicht relevanten Komponenten<br>
+						Dynamsiche Filter zum Ausschluss von Teilbäumen der Ausführung
+					</aside>
 				</section>
 				
 				<section>
@@ -400,14 +462,6 @@
 					<div>
 						<img src="img/trace_view_threads.pdf" alt="Trace View Threads" style="width:100%"><br>
 					</div>
-				</section>
-				
-				<section>
-					<h2>Einschränkungen von Parceive</h2>
-						<span class="fragment"><b>Unvollständigkeit</b> durch dynamische Analyse<span><br>
-						<span class="fragment"><b>Verzögerung</b> durch Instrumentierung<span><br>
-						<span class="fragment">Eingeschränkte <b>Portabilität</b><span><br>
-						<span class="fragment"><b>Fehlende Unterstützung</b> verteilter Anwendungen<span>
 				</section>
 			</section>
 			
@@ -431,7 +485,7 @@
 						class="fragment bla fade-in-then-out" data-fragment-index="3">A Visualization Framework for Parallelization.<br>
 						Andreas Wilhelm, Victor Savu, Efe Amadasun, Michael Gerndt and Tobias Schuele.<br>
 						IEEE VISSOFT, 2016</span><br>
-				        <span class="fragment" data-fragment-index="4"><b>Methode</b> für Software Architektur Rekonstruktion<span>
+				        <span class="fragment" data-fragment-index="4"><b>Methode</b> für Software-Architektur-Rekonstruktion<span>
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="4">Tool-based Interactive Software Parallelization: A Case Study.<br>
 						Andreas Wilhelm, Faris Čakarić, Michael Gerndt and Tobias Schüle.<br>
@@ -440,13 +494,37 @@
 						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
 						class="fragment bla fade-in-then-out" data-fragment-index="5">Interactive Software Parallelization based on Hybrid Analysis and Software Architecture Reconstruction<br>
 						Andreas Wilhelm<br>PhD Thesis, 2019</span><br>
+					
+					<aside class="notes">
+						1. Unterscheidung: Keine Parallelisierung von Hotspots, sondern Restrukturierung anhand von Szenarien<br>
+						2. Meta-Model, das effizient komplizierte und Datenbanbhängigkeitsanalysen auf beliebigen Teilen der Software ermöglicht<br>
+						3. Visualisierungsframework, das skalierbare Abstraktionen und Interaktionen bietet für die Darstellung von Verhalten und Struktur von Software<br>
+						4. Methode für SAR, welches benutzerdefinierte Abstraktionen ermöglicht. Die selben Abstraktionen wie die der Entwickler.<br>
+						5. Evaluation anhand von einem kleinen Beispiel für das Verständnis und einem größeren Software mit 200.000k Zeilen Code.
+					</aside>
 				</section>
 				
 				<section>
 					<h2>Möglichkeiten für weitere Arbeiten</h2>
-						<span class="fragment">Mehr <b>Automatisierung</b><span><br>
-						<span class="fragment"><b>Aggregation</b> mehrerer Analyse-Läufe<span><br>
-						<span class="fragment"><b>Benutzerdefinierte</b> Analysen<span><br>
+						<span class="fragment" data-fragment-index="1">Mehr <b>Automatisierung</b><span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="1"><img data-src="img/task_graph.png" style="width:280px; margin: 30px 30px"></span><br>
+						<span class="fragment" data-fragment-index="2"><b>Aggregation</b> von Analysen<span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="2"><img data-src="img/merge.png" style="width:280px; margin: 30px 30px"></span><br>
+						<span class="fragment" data-fragment-index="3">Unterstützung <b>verteilter Anwendungen</b><span>
+						<span style="font-size: 18px; position: fixed; bottom: 50px; right:0%; width: fit-content"
+						class="fragment bla fade-in-then-out" data-fragment-index="3"><img data-src="img/microservices.png" style="width:150px; margin: 30px 30px"></span>
+					
+					<aside class="notes">
+						1. Momentan ist die Identifikation der Szenarien ein manueller Prozess -> Erkennung von Mustern<br>
+						2. Die Analysen arbeiten nur auf Ereignissen, die sie während der Ausführung erkannt haben -> Um die Abdeckung zu erhöhen, könnte man Analsyen aggregieren<br>
+						3. Momentan ist Parceive beschränkt auf monolithisch Anwendungen -> Eine Erweiterung für verteilte Systeme Architekturen wäre Sinnvoll...
+					</aside>
+				</section>
+					
+				<section>
+					<h3>Nächstes Ziel: Open-Source</h3>
 				</section>
 			</section>
 
